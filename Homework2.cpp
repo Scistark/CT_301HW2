@@ -66,7 +66,7 @@ class testingopeningfile {
         int currentint = 0;
         int totalint = 0;
         while(s >> totalint){
-            cout << totalint <<endl;
+            //cout << totalint <<endl;
             numberofthreeadding(totalint);
         }
         //this while loop goes through all the contents of everyline
