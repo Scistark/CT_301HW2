@@ -81,6 +81,7 @@ class HW2class{
         stringstream streamversionofstring(ppmlinestring);
         int totalint = 0;
         while(streamversionofstring >> totalint){
+
             addingIntegerToSumforpixel(totalint);
             //cout << totalint <<" TOOINT\n" << endl;
 
