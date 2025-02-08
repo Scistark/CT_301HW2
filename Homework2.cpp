@@ -10,6 +10,12 @@ using namespace std;
 #include <list>
 
 class testingopeningfile {
+    int checksumsarray;
+
+    void OpeningchecksumsAndCountingvalues(){
+        
+    }
+
     //thses lines are for the puroses of adding and creating blocks of three
     int numberof3 = 0;
     int totalofthethree = 0;
@@ -35,28 +41,28 @@ class testingopeningfile {
 }
     }
     public:
-    void Testingopeningafile(){
-    string filetext;
-    ifstream textfile;
-    string currentline;
-    textfile.open("Test.ppm");
+    void OpeningImageppmFile(){
+    //string filetext;
+    ifstream ImageppmFile;
+    string currentLineOfImageString;
+    ImageppmFile.open("Test.ppm");
     int linenumber = 0;
 
 
 
 
     //this while loop interates through all the lines
-    while(getline(textfile,currentline)){
+    while(getline(ImageppmFile,currentLineOfImageString)){
         //this makes sure that there are only integers in the line
-        for(char character : currentline){
-            //cout << "Line number    "<<linenumber << "currentint" << currentline<< endl;
+        for(char character : currentLineOfImageString){
+            //cout << "Line number    "<<linenumber << "currentint" << currentLineOfImageString<< endl;
             //this passes every character into a checker to make sure its a digit
             checkifaninteger(character, linenumber);
         }
         //if that passes then add the numbers together in groups of three
 
         //cout << linenumber << "  line number"<<endl;
-        stringstream s(currentline);
+        stringstream s(currentLineOfImageString);
         int currentint = 0;
         int totalint = 0;
         while(s >> totalint){
@@ -67,13 +73,13 @@ class testingopeningfile {
 
         linenumber++;
         //cout << s << endl;
-        //cout <<currentline.size() << endl;
-        //cout << currentline << "space"<<test<<"!!"<<currentline.size()<<endl;
+        //cout <<currentLineOfImageString.size() << endl;
+        //cout << currentLineOfImageString << "space"<<test<<"!!"<<currentLineOfImageString.size()<<endl;
         //if(test.c_str()[3] == '\n' || test.c_str()[3] == ' '){
         //}else{
         //    cout <<test.c_str()[3]<<endl;
        // }
-        ///for(int x = 0; x < currentline.size(); x++){
+        ///for(int x = 0; x < currentLineOfImageString.size(); x++){
             //if(test.c_str()[x] == '\n'){}else{
             //cout << test.c_str()[x] << endl;}
         //}
@@ -99,8 +105,12 @@ class testingopeningfile {
         trackofcalcuatedhashesline++;
 
     }
+    void OpeningchecksumsFile(){
+        ifstream ImageChecksumsFile;
 };
+int initilizearrays(){
 
+}
 
 int main(int argc, char* argv[]) {
     //make sure that the input is the right number
@@ -113,10 +123,11 @@ int main(int argc, char* argv[]) {
         //eli.var = 20;
         //eli.print();
         testingopeningfile elliot;
-        elliot.Testingopeningafile();
+        elliot.OpeningImageppmFile();
         return -1;
     }
     cout << "good jobaaaaaasssz";
     cout << +argc;
     return 0;
 }
+};
