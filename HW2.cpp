@@ -86,6 +86,16 @@ class HW2class{
             //cout << totalint <<" TOOINT\n" << endl;
 
         }
+        //this runs after the ENTIRE ppm image is iterated through
+    }
+    if(threenumbertracker != 0){
+        cout << "incorrect amount of pixles" << endl;
+        exit(-1);
+    }
+    string checksumstring;
+    if(checksumfile.peek() != EOF){
+        cout << "Checksum file is longer than image" << endl;
+        exit(-1);
     }
     }
     void checkonlyIntegers(char integer, int linenumber){
@@ -120,17 +130,30 @@ class HW2class{
         }
 
     }
-    int errorcheckchecksumfile(string checksumstring){
+    int errorcheckchecksumfile(string checksumstring, int checksumlinenumber){
+        for(char integer : checksumstring){
+            checkonlyIntegers(integer,checksumlinenumber);
+        }
+        //checkonlyIntegers()
         return stoi(checksumstring);
     }
+    int checksumfileline = 0;
     void comparingagenstchecksumfile(int ppmhash, int line){
         string checksumstring;
-        cout << "total sum"<<ppmhash << " for line "<< line << endl;
+        if(checksumfile.peek() == EOF){
+            cout << "checksum file is to short" << endl;
+            exit(-1);
+        }
+        //cout << "total sum"<<ppmhash << " for line "<< line << endl;
         getline(checksumfile, checksumstring);
-        if(ppmhash == errorcheckchecksumfile(checksumstring)){
-            cout << " THEY MACH "<< ppmhash << " AND " << errorcheckchecksumfile(checksumstring) << endl;
+        //checkonlyIntegers(checksumstring, checksumfileline);
+        int errorchecksumfileint = errorcheckchecksumfile(checksumstring, checksumfileline);
+        if(ppmhash == errorchecksumfileint){
+            cout << "THEY MACH "<< ppmhash << " AND " << errorchecksumfileint << endl;
+            checksumfileline++;
         }else{
-            cout << " THEY DONT MATCH MACH "<< ppmhash << " AND " << errorcheckchecksumfile(checksumstring) << endl;
+            cout << "THEY DONT MATCH MACH "<< ppmhash << " AND " << errorchecksumfileint << endl;
+            checksumfileline++;
         }
         
     }
